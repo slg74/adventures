@@ -19,7 +19,7 @@ int main(int argc, char **argv) {
 	    exit(EXIT_FAILURE);
     }
 
-    std::string pattern      = argv[1]; 
+    std::string              pattern = argv[1];
     std::vector<string>      lines;         
     std::stringstream        input_file;
     std::string              text_line;
@@ -30,7 +30,7 @@ int main(int argc, char **argv) {
         lines.push_back(text_line);                      // this builds our words-lines vector.
     }
 
-    std::string converted_pattern = RegexConverter(pattern);
+    std::string converted_pattern = RegexConverter(pattern); 
 
     FindMatchingLines(lines, converted_pattern);
 
@@ -41,7 +41,7 @@ int main(int argc, char **argv) {
 const std::string RegexConverter(std::string& pattern) {
 
     std::vector<string> 	pattern_split;
-    std::string             converted_pattern;
+    std::string                 converted_pattern;
 
     SplitInputLine(pattern, pattern_split);
     ValidateToken(pattern_split, converted_pattern);
