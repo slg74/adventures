@@ -49,6 +49,17 @@ const std::string RegexConverter(std::string& pattern) {
     return converted_pattern;
 }
 
+void FindMatchingLines(std::vector<string> lines, std::string pattern) {
+    std::string		phrase;
+    pcrecpp::RE		re(pattern);
+
+    for (int i = 0; i < lines.size(); i++) {
+        if (re.PartialMatch(lines[i], &phrase)) {
+            std::cout << lines[i] << std::endl;
+        }
+    }
+}
+
 void SplitInputLine(std::string& pattern, std::vector<std::string>& pattern_split) {
 
     char separator = ' ';
@@ -96,15 +107,4 @@ const std::string TokenToRegex(std::string token) {
 	    exit(EXIT_FAILURE);
     }
     return converted_word;
-}
-
-void FindMatchingLines(std::vector<string> lines, std::string pattern) {
-    std::string		phrase;
-    pcrecpp::RE		re(pattern);
-
-    for (int i = 0; i < lines.size(); i++) {
-        if (re.PartialMatch(lines[i], &phrase)) {
-            std::cout << lines[i] << std::endl;
-        }
-    }
 }
