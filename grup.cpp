@@ -19,11 +19,11 @@ int main(int argc, char **argv) {
         exit(EXIT_FAILURE);
     }
 
-    std::string              pattern = argv[1];
-    std::vector<string>      lines;         
-    std::vector<string>      matching_lines;         
-    std::stringstream        input_file;
-    std::string              text_line;
+    std::string                 pattern = argv[1];
+    std::vector<string>         lines;         
+    std::vector<string>         matching_lines;         
+    std::stringstream           input_file;
+    std::string                 text_line;
 
     input_file << std::cin.rdbuf();                      // slurp in the input file...
 
