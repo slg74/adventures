@@ -16,7 +16,7 @@ int main(int argc, char **argv) {
     
     if (argc != 2) {
         std::cout << "Usage: " << argv[0] << " <pattern> " << std::endl;
-	    exit(EXIT_FAILURE);
+        exit(EXIT_FAILURE);
     }
 
     std::string              pattern = argv[1];
