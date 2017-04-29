@@ -7,8 +7,8 @@
 
 void split_input_line(std::string& pattern, std::vector<string>& pattern_split);
 void validate_token(std::vector<string>& pattern_split, std::string& converted_pattern);
-const std::vector<string> find_matching_lines(std::vector<string> lines, std::string pattern);
 
+const std::vector<string> find_matching_lines(std::vector<string> lines, std::string pattern);
 const std::string convert_regex(std::string& pattern);
 const std::string to_regex(std::string token);
 
