@@ -13,6 +13,7 @@ const std::string convert_regex(std::string& pattern);
 const std::string to_regex(std::string token);
 
 int main(int argc, char **argv) {
+
     if (argc != 2) {
         std::cout << "Usage: " << argv[0] << " <pattern> " << std::endl;
         exit(EXIT_FAILURE);
@@ -43,6 +44,7 @@ int main(int argc, char **argv) {
 
 
 const std::string convert_regex(std::string& pattern) {
+
     std::vector<string> 	pattern_split;
     std::string                 converted_pattern;
 
@@ -53,6 +55,7 @@ const std::string convert_regex(std::string& pattern) {
 }
 
 std::vector<string> find_matching_lines(std::vector<string> lines, std::string pattern) {
+
     std::string		        phrase;
     pcrecpp::RE		        re(pattern);
     std::vector<string>         matching_lines;
@@ -66,6 +69,7 @@ std::vector<string> find_matching_lines(std::vector<string> lines, std::string p
 }
 
 void split_input_line(std::string& pattern, std::vector<std::string>& pattern_split) {
+
     char separator = ' ';
 
     std::size_t p;
@@ -81,6 +85,7 @@ void split_input_line(std::string& pattern, std::vector<std::string>& pattern_sp
 }
 
 void validate_token(std::vector<string>& pattern_split, std::string& converted_pattern) {
+
     pcrecpp::RE			re("%{(.)*}");
 
     converted_pattern.append("(");                                             
@@ -96,6 +101,7 @@ void validate_token(std::vector<string>& pattern_split, std::string& converted_p
 }
 
 const std::string to_regex(std::string token) {
+
     std::string converted_word;
 
     if ((token.length() == 4) || (token.length() == 5)) {
