@@ -46,7 +46,7 @@ int main(int argc, char **argv) {
 const std::string convert_regex(std::string& pattern) {
 
     std::vector<string> 	pattern_split;
-    std::string                 converted_pattern;
+    std::string             converted_pattern;
 
     split_input_line(pattern, pattern_split);
     validate_token(pattern_split, converted_pattern);
@@ -58,7 +58,7 @@ std::vector<string> find_matching_lines(std::vector<string> lines, std::string p
 
     std::string		        phrase;
     pcrecpp::RE		        re(pattern);
-    std::vector<string>         matching_lines;
+    std::vector<string>     matching_lines;
 
     for (int i = 0; i < lines.size(); i++) {
         if (re.PartialMatch(lines[i], &phrase)) {
