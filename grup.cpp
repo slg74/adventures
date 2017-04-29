@@ -10,7 +10,7 @@ void validate_token(std::vector<string>& pattern_split, std::string& converted_p
 void find_matching_lines(std::vector<string> lines, std::string pattern);
 
 const std::string convert_regex(std::string& pattern);
-const std::string token_to_regex(std::string token);
+const std::string to_regex(std::string token);
 
 int main(int argc, char **argv) {
     if (argc != 2) {
@@ -79,7 +79,7 @@ void validate_token(std::vector<string>& pattern_split, std::string& converted_p
     converted_pattern.append("(");                                             
     for (int i=0; i < pattern_split.size(); i++) {
         if (re.PartialMatch(pattern_split[i])) {                               
-            converted_pattern.append(token_to_regex(pattern_split[i]) + " ");
+            converted_pattern.append(to_regex(pattern_split[i]) + " ");
 
         } else {
             converted_pattern.append(pattern_split[i] + " ");
@@ -89,7 +89,7 @@ void validate_token(std::vector<string>& pattern_split, std::string& converted_p
     converted_pattern.append(")");                                              
 }
 
-const std::string token_to_regex(std::string token) {
+const std::string to_regex(std::string token) {
     std::string converted_word;
 
     if ((token.length() == 4) || (token.length() == 5)) {
