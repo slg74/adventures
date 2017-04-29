@@ -16,7 +16,7 @@ int main(int argc, char **argv) {
 
     if (argc != 2) {
         std::cout << "Usage: " << argv[0] << " <pattern> " << std::endl;
-        exit(EXIT_FAILURE);
+        return(EXIT_FAILURE);
     }
 
     std::string                 pattern = argv[1];
@@ -109,7 +109,7 @@ const std::string to_regex(std::string token) {
     } else if (token.length() == 6) {
 	    converted_word = std::string("{.}*{") + token[4] + "}"; 
     } else {
-	    exit(EXIT_FAILURE);
+	    converted_word = ""; 
     }
     return converted_word;
 }
