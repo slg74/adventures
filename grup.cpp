@@ -78,7 +78,7 @@ void split_input_line(std::string& pattern, std::vector<std::string>& pattern_sp
     // TODO - refactor. 
     for (p = 0, q = 0; p != pattern.npos; p = q) {
         pattern_split.push_back(
-	    pattern.substr(p + (p != 0),
+	                  pattern.substr(p + (p != 0),
                       (q = pattern.find(separator, p+1)) - p - (p != 0))
 	    );
     }
@@ -86,6 +86,9 @@ void split_input_line(std::string& pattern, std::vector<std::string>& pattern_sp
 
 void validate_token(std::vector<string>& pattern_split, std::string& converted_pattern) {
 
+    // match lines that have "%{ ... }" in them. 
+    // pcrecpp uses opening and closing 
+    // parentheses as a match delimeter. 
     pcrecpp::RE			re("%{(.)*}");
 
     converted_pattern.append("(");                                             
