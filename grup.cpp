@@ -80,7 +80,6 @@ void validate_token(std::vector<string>& pattern_split, std::string& converted_p
     for (int i=0; i < pattern_split.size(); i++) {
         if (re.PartialMatch(pattern_split[i])) {                               
             converted_pattern.append(to_regex(pattern_split[i]) + " ");
-
         } else {
             converted_pattern.append(pattern_split[i] + " ");
         }
