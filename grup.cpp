@@ -107,7 +107,8 @@ const std::string to_regex(std::string token) {
     // if the token length, %{...} is 4, or 5, converted word is a greedy match, ".*"
     if ((token.length() == 4) || (token.length() == 5)) {
 	    converted_word = "(.*)"; 
-    // if the token lenth is 6, e.g. %{1NS0}, we match the previous brackets, then the open bracket, the token, and the closing bracket.
+    // if the token length is 6, e.g. %{1NS0}, we match the previous set of brackets, 
+    // then the open bracket, the matching token, and the closing bracket.
     } else if (token.length() == 6) {
 	    converted_word = std::string("{.}*{") + token[4] + "}"; 
     } else {
