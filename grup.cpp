@@ -7,7 +7,7 @@
 
 void split_input_line(std::string& pattern, std::vector<string>& pattern_split);
 void validate_token(std::vector<string>& pattern_split, std::string& converted_pattern);
-void find_matching_lines(std::vector<string> lines, std::string pattern);
+std::vector<string> find_matching_lines(std::vector<string> lines, std::string pattern);
 
 const std::string convert_regex(std::string& pattern);
 const std::string to_regex(std::string token);
@@ -20,6 +20,7 @@ int main(int argc, char **argv) {
 
     std::string              pattern = argv[1];
     std::vector<string>      lines;         
+    std::vector<string>      matching_lines;         
     std::stringstream        input_file;
     std::string              text_line;
 
@@ -31,7 +32,11 @@ int main(int argc, char **argv) {
 
     std::string converted_pattern = convert_regex(pattern); 
 
-    find_matching_lines(lines, converted_pattern);
+    matching_lines = find_matching_lines(lines, converted_pattern);
+
+    for (int i = 0; i < matching_lines.size(); i++) {
+	    std::cout << matching_lines[i] << std::endl;
+    }
 
     return(EXIT_SUCCESS);
 }
@@ -47,15 +52,17 @@ const std::string convert_regex(std::string& pattern) {
     return converted_pattern;
 }
 
-void find_matching_lines(std::vector<string> lines, std::string pattern) {
+std::vector<string> find_matching_lines(std::vector<string> lines, std::string pattern) {
     std::string		phrase;
     pcrecpp::RE		re(pattern);
+    std::vector<string> matching_lines;
 
     for (int i = 0; i < lines.size(); i++) {
         if (re.PartialMatch(lines[i], &phrase)) {
-            std::cout << lines[i] << std::endl;
+            matching_lines.push_back(lines[i]);
         }
     }
+    return matching_lines;
 }
 
 void split_input_line(std::string& pattern, std::vector<std::string>& pattern_split) {
