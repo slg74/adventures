@@ -13,7 +13,6 @@ const std::string RegexConverter(std::string& pattern);
 const std::string TokenToRegex(std::string token);
 
 int main(int argc, char **argv) {
-    
     if (argc != 2) {
         std::cout << "Usage: " << argv[0] << " <pattern> " << std::endl;
         exit(EXIT_FAILURE);
@@ -39,7 +38,6 @@ int main(int argc, char **argv) {
 
 
 const std::string RegexConverter(std::string& pattern) {
-
     std::vector<string> 	pattern_split;
     std::string                 converted_pattern;
 
@@ -61,7 +59,6 @@ void FindMatchingLines(std::vector<string> lines, std::string pattern) {
 }
 
 void SplitInputLine(std::string& pattern, std::vector<std::string>& pattern_split) {
-
     char separator = ' ';
 
     std::size_t p;
@@ -77,11 +74,9 @@ void SplitInputLine(std::string& pattern, std::vector<std::string>& pattern_spli
 }
 
 void ValidateToken(std::vector<string>& pattern_split, std::string& converted_pattern) {
-
     pcrecpp::RE			re("%{(.)*}");
 
     converted_pattern.append("(");                                             
-
     for (int i=0; i < pattern_split.size(); i++) {
         if (re.PartialMatch(pattern_split[i])) {                               
             converted_pattern.append(TokenToRegex(pattern_split[i]) + " ");
@@ -91,12 +86,10 @@ void ValidateToken(std::vector<string>& pattern_split, std::string& converted_pa
         }
     }
     converted_pattern.erase(converted_pattern.find_last_not_of(" \n\r\t") + 1);   // get rid of whitespace, newlines, carriage returns and tabs.
-
     converted_pattern.append(")");                                              
 }
 
 const std::string TokenToRegex(std::string token) {
-
     std::string converted_word;
 
     if ((token.length() == 4) || (token.length() == 5)) {
