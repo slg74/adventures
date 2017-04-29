@@ -5,12 +5,12 @@
 #include <string>
 #include <vector>
 
-void SplitInputLine(std::string& pattern, std::vector<string>& pattern_split);
-void ValidateToken(std::vector<string>& pattern_split, std::string& converted_pattern);
-void FindMatchingLines(std::vector<string> lines, std::string pattern);
+void split_input_line(std::string& pattern, std::vector<string>& pattern_split);
+void validate_token(std::vector<string>& pattern_split, std::string& converted_pattern);
+void find_matching_lines(std::vector<string> lines, std::string pattern);
 
-const std::string RegexConverter(std::string& pattern);
-const std::string TokenToRegex(std::string token);
+const std::string convert_regex(std::string& pattern);
+const std::string token_to_regex(std::string token);
 
 int main(int argc, char **argv) {
     if (argc != 2) {
@@ -29,25 +29,25 @@ int main(int argc, char **argv) {
         lines.push_back(text_line);                      // this builds our words-lines vector.
     }
 
-    std::string converted_pattern = RegexConverter(pattern); 
+    std::string converted_pattern = convert_regex(pattern); 
 
-    FindMatchingLines(lines, converted_pattern);
+    find_matching_lines(lines, converted_pattern);
 
     return(EXIT_SUCCESS);
 }
 
 
-const std::string RegexConverter(std::string& pattern) {
+const std::string convert_regex(std::string& pattern) {
     std::vector<string> 	pattern_split;
     std::string                 converted_pattern;
 
-    SplitInputLine(pattern, pattern_split);
-    ValidateToken(pattern_split, converted_pattern);
+    split_input_line(pattern, pattern_split);
+    validate_token(pattern_split, converted_pattern);
 
     return converted_pattern;
 }
 
-void FindMatchingLines(std::vector<string> lines, std::string pattern) {
+void find_matching_lines(std::vector<string> lines, std::string pattern) {
     std::string		phrase;
     pcrecpp::RE		re(pattern);
 
@@ -58,7 +58,7 @@ void FindMatchingLines(std::vector<string> lines, std::string pattern) {
     }
 }
 
-void SplitInputLine(std::string& pattern, std::vector<std::string>& pattern_split) {
+void split_input_line(std::string& pattern, std::vector<std::string>& pattern_split) {
     char separator = ' ';
 
     std::size_t p;
@@ -73,13 +73,13 @@ void SplitInputLine(std::string& pattern, std::vector<std::string>& pattern_spli
     }
 }
 
-void ValidateToken(std::vector<string>& pattern_split, std::string& converted_pattern) {
+void validate_token(std::vector<string>& pattern_split, std::string& converted_pattern) {
     pcrecpp::RE			re("%{(.)*}");
 
     converted_pattern.append("(");                                             
     for (int i=0; i < pattern_split.size(); i++) {
         if (re.PartialMatch(pattern_split[i])) {                               
-            converted_pattern.append(TokenToRegex(pattern_split[i]) + " ");
+            converted_pattern.append(token_to_regex(pattern_split[i]) + " ");
 
         } else {
             converted_pattern.append(pattern_split[i] + " ");
@@ -89,7 +89,7 @@ void ValidateToken(std::vector<string>& pattern_split, std::string& converted_pa
     converted_pattern.append(")");                                              
 }
 
-const std::string TokenToRegex(std::string token) {
+const std::string token_to_regex(std::string token) {
     std::string converted_word;
 
     if ((token.length() == 4) || (token.length() == 5)) {
