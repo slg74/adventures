@@ -15,7 +15,7 @@ const std::string to_regex(std::string token);
 int main(int argc, char **argv) {
 
     if (argc != 2) {
-        std::cout << "Usage: " << argv[0] << " <pattern> " << std::endl;
+        std::cerr << "Usage: " << argv[0] << " <pattern> " << std::endl;
         return EXIT_FAILURE;
     }
 
