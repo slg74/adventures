@@ -81,9 +81,9 @@ void split_input_line(std::string& pattern, std::vector<std::string>& pattern_sp
     // TODO - refactor. 
     for (p = 0, q = 0; p != std::string::npos; p = q) {
         pattern_split.push_back(
-	                  pattern.substr(p + (p != 0),
-                      (q = pattern.find(separator, p+1)) - p - (p != 0))
-	    );
+	    pattern.substr(p + (p != 0),
+            (q = pattern.find(separator, p+1)) - p - (p != 0))
+	);
     }
 }
 
