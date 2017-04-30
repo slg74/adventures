@@ -37,7 +37,7 @@ int main(int argc, char **argv) {
     // build our vector of matching lines.
     matching_lines = find_matching_lines(lines, converted_pattern);
 
-    // display each matched linie in our vector. 
+    // display each matched line in our vector. 
     for (int i = 0; i < matching_lines.size(); i++) {
 	    std::cout << matching_lines[i] << std::endl;
     }
