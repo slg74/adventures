@@ -122,7 +122,7 @@ const std::string to_regex(std::string token) {
     } else if (token.length() == 6) {
 
         // the %{0S1} %{1} ran away - this should capture "big brown" for %{0S1} and "fox" for %{1}, if the input
-        // string is "the quick brown fox ran away. S matches on spaces from the first match, then 1 means one
+        // string is "the quick brown fox ran away". S matches on spaces from the first match, then 1 means one
         // space after the match. 
         if (token[3] == 'S') {
             converted_word = std::string("(.*) (.*)"); 
