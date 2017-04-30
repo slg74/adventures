@@ -41,7 +41,6 @@ int main(int argc, char **argv) {
     for (int i = 0; i < matching_lines.size(); i++) {
 	    std::cout << matching_lines[i] << std::endl;
     }
-
     return EXIT_SUCCESS;
 }
 
