@@ -135,11 +135,8 @@ const std::string to_regex(std::string token) {
         } else {
             converted_word = std::string("{.}*{") + token[4] + "}"; 
         }
-
     } else {
-        
 	    converted_word = ""; 
-
     }
     return converted_word;
 }
