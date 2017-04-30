@@ -110,11 +110,11 @@ const std::string validate_token(std::vector<string>& pattern_split, std::string
 
 const std::string to_regex(std::string token) {
 
-    std::string converted_word;
+    std::string regex;
 
-    // if the token length, %{...} is 4, or 5, converted word is a greedy match, ".*"
+    // if the token length, %{...} is 4, or 5, the regex is a greedy match, ".*"
     if ((token.length() == 4) || (token.length() == 5)) {
-	    converted_word = "(.*)"; 
+	    regex = "(.*)"; 
 
     // if the token length is 6, e.g. %{1NS0}, we match the previous set of brackets, 
     // then the open bracket, the matching token, and the closing bracket.
@@ -124,12 +124,12 @@ const std::string to_regex(std::string token) {
         // string is "the quick brown fox ran away". S matches on spaces from the first match, then 1 means one
         // space after the match. 
         if (token[3] == 'S') {
-            converted_word = std::string("(.*) (.*)"); 
+            regex = std::string("(.*) (.*)"); 
         } else {
-            converted_word = std::string("{.}*{") + token[4] + "}"; 
+            regex = std::string("{.}*{") + token[4] + "}"; 
         }
     } else {
-	    converted_word = ""; 
+	    regex = ""; 
     }
-    return converted_word;
+    return regex;
 }
