@@ -16,7 +16,7 @@ int main(int argc, char **argv) {
 
     if (argc != 2) {
         std::cout << "Usage: " << argv[0] << " <pattern> " << std::endl;
-        return(EXIT_FAILURE);
+        return EXIT_FAILURE;
     }
 
     std::string                 pattern = argv[1];
@@ -42,7 +42,7 @@ int main(int argc, char **argv) {
 	    std::cout << matching_lines[i] << std::endl;
     }
 
-    return(EXIT_SUCCESS);
+    return EXIT_SUCCESS;
 }
 
 
