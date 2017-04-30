@@ -130,7 +130,7 @@ const std::string to_regex(std::string token) {
         // space after the match. 
 
         if (token[3] == 'S') {
-            std::cout << "Found S in match token." << std::endl;
+            //std::cout << "Found S in match token." << std::endl;
             converted_word = std::string("(.*) (.*)"); 
 
 	    } else {
