@@ -6,8 +6,8 @@
 #include <vector>
 
 void split_input_line(std::string& pattern, std::vector<string>& pattern_split);
-void validate_token(std::vector<string>& pattern_split, std::string& converted_pattern);
 
+const std::string validate_token(std::vector<string>& pattern_split, std::string& converted_pattern);
 const std::vector<string> find_matching_lines(std::vector<string> lines, std::string pattern);
 const std::string convert_regex(std::string& pattern);
 const std::string to_regex(std::string token);
@@ -87,7 +87,7 @@ void split_input_line(std::string& pattern, std::vector<std::string>& pattern_sp
     }
 }
 
-void validate_token(std::vector<string>& pattern_split, std::string& converted_pattern) {
+const std::string validate_token(std::vector<string>& pattern_split, std::string& converted_pattern) {
 
     // match lines that have "%{ ... }" in them. 
     // pcrecpp uses opening and closing 
@@ -104,6 +104,8 @@ void validate_token(std::vector<string>& pattern_split, std::string& converted_p
     }
     converted_pattern.erase(converted_pattern.find_last_not_of(" \n\r\t") + 1);   // get rid of whitespace, newlines, carriage returns and tabs.
     converted_pattern.append(")");                                              
+
+    return converted_pattern;
 }
 
 const std::string to_regex(std::string token) {
