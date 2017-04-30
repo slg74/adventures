@@ -132,12 +132,14 @@ const std::string to_regex(std::string token) {
         if (token[3] == 'S') {
             //std::cout << "Found S in match token." << std::endl;
             converted_word = std::string("(.*) (.*)"); 
-
-	    } else {
+        } else {
             converted_word = std::string("{.}*{") + token[4] + "}"; 
         }
+
     } else {
+        
 	    converted_word = ""; 
+
     }
     return converted_word;
 }
