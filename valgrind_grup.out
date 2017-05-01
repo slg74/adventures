@@ -1,3 +1,7 @@
+[scott@whargarbl adventures]$ cat file | valgrind -v --log-file=valgrind_grup.out ./grup "%{01} %{0} ran away"
+the big brown fox ran away
+
+
 ==27459== Memcheck, a memory error detector
 ==27459== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
 ==27459== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
