@@ -28,3 +28,8 @@ Valgrind
 the big brown fox ran away  
 
 
+This produces the file "valgrind_grup.out" in the CWD.  
+This file reports 0 memory leaks or errors.  
+
+
+
