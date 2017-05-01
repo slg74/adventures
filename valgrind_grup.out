@@ -1,0 +1,81 @@
+
+[scott@whargarbl adventures]$ valgrind -v --log-file=valgrind_grup.out cat file | ./grup "%{01} %{0} ran away"
+the big brown fox ran away
+
+
+==27104== Memcheck, a memory error detector
+==27104== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==27104== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==27104== Command: cat file
+==27104== Parent PID: 4784
+==27104== 
+--27104-- 
+--27104-- Valgrind options:
+--27104--    -v
+--27104--    --log-file=valgrind_grup.out
+--27104-- Contents of /proc/version:
+--27104--   Linux version 3.10.0-514.16.1.el7.x86_64 (builder@kbuilder.dev.centos.org) (gcc version 4.8.5 20150623 (Red Hat 4.8.5-11) (GCC) ) #1 SMP Wed Apr 12 15:04:24 UTC 2017
+--27104-- 
+--27104-- Arch and hwcaps: AMD64, LittleEndian, amd64-cx16-lzcnt-rdtscp-sse3-avx
+--27104-- Page sizes: currently 4096, max supported 4096
+--27104-- Valgrind library directory: /usr/lib64/valgrind
+--27104-- Reading syms from /usr/bin/cat
+--27104--    object doesn't have a symbol table
+--27104-- Reading syms from /usr/lib64/ld-2.17.so
+--27104-- Reading syms from /usr/lib64/valgrind/memcheck-amd64-linux
+--27104--    object doesn't have a symbol table
+--27104--    object doesn't have a dynamic symbol table
+--27104-- Scheduler: using generic scheduler lock implementation.
+--27104-- Reading suppressions file: /usr/lib64/valgrind/default.supp
+==27104== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-27104-by-scott-on-whargarbl.example.com
+==27104== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-27104-by-scott-on-whargarbl.example.com
+==27104== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-27104-by-scott-on-whargarbl.example.com
+==27104== 
+==27104== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==27104== don't want to do, unless you know exactly what you're doing,
+==27104== or are doing some strange experiment):
+==27104==   /usr/lib64/valgrind/../../bin/vgdb --pid=27104 ...command...
+==27104== 
+==27104== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==27104==   /path/to/gdb cat
+==27104== and then give GDB the following command
+==27104==   target remote | /usr/lib64/valgrind/../../bin/vgdb --pid=27104
+==27104== --pid is optional if only one valgrind process is running
+==27104== 
+--27104-- REDIR: 0x4018e90 (ld-linux-x86-64.so.2:strlen) redirected to 0x38056d91 (???)
+--27104-- REDIR: 0x4018c60 (ld-linux-x86-64.so.2:index) redirected to 0x38056dab (???)
+--27104-- Reading syms from /usr/lib64/valgrind/vgpreload_core-amd64-linux.so
+--27104-- Reading syms from /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so
+==27104== WARNING: new redirection conflicts with existing -- ignoring it
+--27104--     old: 0x04018e90 (strlen              ) R-> (0000.0) 0x38056d91 ???
+--27104--     new: 0x04018e90 (strlen              ) R-> (2007.0) 0x04c2aa90 strlen
+--27104-- REDIR: 0x4018e10 (ld-linux-x86-64.so.2:strcmp) redirected to 0x4c2bbe0 (strcmp)
+--27104-- REDIR: 0x4019a00 (ld-linux-x86-64.so.2:mempcpy) redirected to 0x4c2ec20 (mempcpy)
+--27104-- Reading syms from /usr/lib64/libc-2.17.so
+--27104-- REDIR: 0x4ebcec0 (libc.so.6:strcasecmp) redirected to 0x4a227b0 (_vgnU_ifunc_wrapper)
+--27104-- REDIR: 0x4eb9c40 (libc.so.6:strnlen) redirected to 0x4a227b0 (_vgnU_ifunc_wrapper)
+--27104-- REDIR: 0x4ebf190 (libc.so.6:strncasecmp) redirected to 0x4a227b0 (_vgnU_ifunc_wrapper)
+--27104-- REDIR: 0x4ebc6a0 (libc.so.6:memset) redirected to 0x4a227b0 (_vgnU_ifunc_wrapper)
+--27104-- REDIR: 0x4ebc650 (libc.so.6:memcpy@GLIBC_2.2.5) redirected to 0x4a227b0 (_vgnU_ifunc_wrapper)
+--27104-- REDIR: 0x4ebb630 (libc.so.6:__GI_strrchr) redirected to 0x4c2a450 (__GI_strrchr)
+--27104-- REDIR: 0x4ebb5f0 (libc.so.6:rindex) redirected to 0x4a227b0 (_vgnU_ifunc_wrapper)
+--27104-- REDIR: 0x4f68300 (libc.so.6:__strrchr_sse42) redirected to 0x4c2a4e0 (__strrchr_sse42)
+--27104-- REDIR: 0x4eb8100 (libc.so.6:__GI_strcmp) redirected to 0x4c2baf0 (__GI_strcmp)
+--27104-- REDIR: 0x4eb9b60 (libc.so.6:__GI_strlen) redirected to 0x4c2a9f0 (__GI_strlen)
+--27104-- REDIR: 0x4eb9d60 (libc.so.6:__GI_strncmp) redirected to 0x4c2b220 (__GI_strncmp)
+--27104-- REDIR: 0x4eb8040 (libc.so.6:__GI_strchr) redirected to 0x4c2a580 (__GI_strchr)
+--27104-- REDIR: 0x4ebbd30 (libc.so.6:memchr) redirected to 0x4c2bc80 (memchr)
+--27104-- REDIR: 0x4ec3150 (libc.so.6:strchrnul) redirected to 0x4c2e740 (strchrnul)
+--27104-- REDIR: 0x4eb2f70 (libc.so.6:malloc) redirected to 0x4c27b5c (malloc)
+--27104-- REDIR: 0x4ebc870 (libc.so.6:__GI_mempcpy) redirected to 0x4c2e950 (__GI_mempcpy)
+--27104-- REDIR: 0x4ec18d0 (libc.so.6:__GI_memcpy) redirected to 0x4c2c580 (__GI_memcpy)
+--27104-- REDIR: 0x4eb3370 (libc.so.6:free) redirected to 0x4c28c56 (free)
+==27104== 
+==27104== HEAP SUMMARY:
+==27104==     in use at exit: 0 bytes in 0 blocks
+==27104==   total heap usage: 31 allocs, 31 frees, 73,312 bytes allocated
+==27104== 
+==27104== All heap blocks were freed -- no leaks are possible
+==27104== 
+==27104== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==27104== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
